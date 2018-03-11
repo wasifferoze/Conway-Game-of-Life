@@ -16,9 +16,9 @@ class GUI(tk.Frame):
         self.pack()
         self.canvas = tk.Canvas(self, width=self.WIDTH, height=self.HEIGHT)
         self.canvas.pack(side=tk.TOP)
-        self.control_area = tk.Frame(self)
+        self.control_area = tk.Frame(self, relief=RAISED, borderwidth=3)
         self.control_area.config(bg="#808080")
-        self.control_area.pack(side=tk.BOTTOM, fill=tk.X)
+        self.control_area.pack(side=tk.BOTTOM, fill=tk.X, expand=True)
         self.create_widgets()
 
     def create_widgets(self):
@@ -33,12 +33,15 @@ class GUI(tk.Frame):
         self.combo_input.bind("<<ComboboxSelected>>", self.combo_callback)
 
         self.next = tk.Button(self.control_area, text="Next", command=self.next_generation)
-        self.next.pack(side=tk.LEFT)
+        self.next.pack(side=tk.LEFT, padx=3, pady=2)
         self.start = tk.Button(self.control_area, text="Start", command=self.start_game)
-        self.start.pack(side=tk.LEFT)
+        self.start.pack(side=tk.LEFT, padx=3, pady=2)
 
         self.stop = tk.Button(self.control_area, text="Stop", fg="red", command=self.stop_game)
-        self.stop.pack(side=tk.LEFT)
+        self.stop.pack(side=tk.LEFT, padx=3, pady=2)
+
+        self.gen_label = tk.Label(self.control_area, text="label", bg="#808080")
+        self.gen_label.pack(side=tk.RIGHT)
 
 
     def combo_callback(self, eventobj):
