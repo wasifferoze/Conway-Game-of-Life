@@ -2,6 +2,7 @@ from tkinter import *
 import tkinter as tk
 from  tkinter import ttk
 
+
 class GUI(tk.Frame):
     """for graphical interface"""
     WIDTH = 803
@@ -25,10 +26,13 @@ class GUI(tk.Frame):
         # Dictionary with options
         choices = ('Clear', 'Small Glider', 'Glider', 'Exploder', '10 Cell Row', 'Light Weight Spaceship', 'Tumbler',
                    'Gosper Glider Gu')
-        tkvar.set('Clear')  # set the default option
-        popupMenu = tk.OptionMenu(self.control_area, tkvar, *choices)
-        popupMenu.pack(side=tk.LEFT)
-        ttk.Combobox(self.control_area, values=choices).pack(side=tk.LEFT)
+        # tkvar.set('Clear')  # set the default option
+        # popupMenu = tk.OptionMenu(self.control_area, tkvar, *choices)
+        # popupMenu.pack(side=tk.LEFT)
+        self.combo_input = ttk.Combobox(self.control_area, values=choices)
+        self.combo_input.pack(side=tk.LEFT)
+        self.combo_input.current(0)
+
     def start_game(self):
         print("hi there, game started!")
 
@@ -37,6 +41,6 @@ class GUI(tk.Frame):
 
 
 win = tk.Tk()
-#win.geometry('+%d+%d' % (200, 200))
+# win.geometry('+%d+%d' % (200, 200))
 app_gui = GUI(master=win)
 win.mainloop()
